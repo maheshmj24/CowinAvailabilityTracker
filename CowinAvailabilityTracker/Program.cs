@@ -15,29 +15,43 @@ namespace CowinAvailabilityTracker
 
         private static async Task Main(string[] args)
         {
-            Console.WriteLine("Checking available slots...");
-
-            Client.DefaultRequestHeaders.Accept.Clear();
-            Client.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
-
-            // District ID comes from the command line argument
-            TrackerResponse trackerResponse = await CalendarByDistrict(args[0]);
-
-            if (trackerResponse.AvailableCount != 0)
+            if (args.Length == 1 && HelpRequired(args[0]))
             {
-                string mailContent = $"Available slots: {trackerResponse.AvailableCount} | Available slots for Age < 45: {trackerResponse.AvailableCountCountLt45} <br> <br> {Environment.NewLine}";
-                foreach (AvailableSession session in trackerResponse.AvailableSessions)
-                {
-                    mailContent += $"Name: {session.Name} | Available capacity: {session.Available_capacity} | Min age limit: {session.Min_age_limit} <br> {Environment.NewLine}";
-                }
-                Console.WriteLine(mailContent);
-
-                await NotifyUser(args[1], args[2], args[3], mailContent);
+                DisplayHelp();
             }
             else
             {
-                Console.WriteLine("No available slots.");
+                if (args.Length != 4)
+                {
+                    Console.WriteLine("Insufficient arguments...");
+                    DisplayHelp();
+                    Environment.Exit(0);
+                }
+
+                Console.WriteLine("Checking available slots...");
+
+                Client.DefaultRequestHeaders.Accept.Clear();
+                Client.DefaultRequestHeaders.Accept.Add(
+                    new MediaTypeWithQualityHeaderValue("application/json"));
+
+                // District ID comes from the command line argument
+                TrackerResponse trackerResponse = await CalendarByDistrict(args[0]);
+
+                if (trackerResponse.AvailableCount != 0)
+                {
+                    string mailContent = $"Available slots: {trackerResponse.AvailableCount} | Available slots for Age < 45: {trackerResponse.AvailableCountCountLt45} <br> <br> {Environment.NewLine}";
+                    foreach (AvailableSession session in trackerResponse.AvailableSessions)
+                    {
+                        mailContent += $"Name: {session.Name} | Available capacity: {session.Available_capacity} | Min age limit: {session.Min_age_limit} <br> {Environment.NewLine}";
+                    }
+                    Console.WriteLine(mailContent);
+
+                    await NotifyUser(args[1], args[2], args[3], mailContent);
+                }
+                else
+                {
+                    Console.WriteLine("No available slots.");
+                }
             }
         }
 
@@ -63,7 +77,7 @@ namespace CowinAvailabilityTracker
                     if (session.Available_capacity != 0)
                     {
                         availableCount++;
-                        if(session.Min_age_limit < 45)
+                        if (session.Min_age_limit < 45)
                         {
                             availableLt45Count++;
                         }
@@ -106,6 +120,17 @@ namespace CowinAvailabilityTracker
             {
                 Console.WriteLine("Email notification failed.");
             }
+        }
+
+        private static bool HelpRequired(string param)
+        {
+            return param == "-h" || param == "--help" || param == "/?";
+        }
+
+        private static void DisplayHelp()
+        {
+            Console.WriteLine("\nCowinAvailabilityTracker\n");
+            Console.WriteLine("Usage: CowinAvailabilityTracker.exe <DISTRICT ID> <SENDGRID API KEY> <FROM EMAIL> <TO EMAIL>");
         }
     }
 }
