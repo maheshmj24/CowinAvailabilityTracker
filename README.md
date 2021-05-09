@@ -54,7 +54,7 @@ The email address to be notified. **Cannot be same as the From Email**.
 
 ## Usage
 
-1. Download the CowinAvailabilityTracker.exe file.
+1. Download the contents of Executables folder.
 2. Open Task Scheduler in Windows. (Search for it in the start menu)
 3. Click on 'Create Task' from Actions.
     1. In the General tab, provide a name for the task.
@@ -64,7 +64,7 @@ The email address to be notified. **Cannot be same as the From Email**.
         2. Set the schedule as you seem fit. The below screenshot is set to start running the task at 8 am everyday, 30 mins apart for 16 hours. (ie 8am - 12am the next day)
         ![taskscheduler_2.png](./HelperImages/taskscheduler_2.png)
     3. In the Actions tab,
-        1. In the Program/script field, browse and select the .exe file downloaded.
+        1. In the Program/script field, browse and select the .exe file downloaded as part of step 1.
         2. In the Add arguments field, provide space separated command line arguments.
         ```
         <DISTRICT ID> <SENDGRID API KEY> <FROM EMAIL> <TO EMAIL>
