@@ -74,3 +74,12 @@ The email address to be notified. **Cannot be same as the From Email**.
     4. Optionally in the Settings tab, check the option - *Run task as soon as possible after a scheduled start is missed.*
         1. If this setting is checked, the Task Scheduler service will start the task if the task was scheduled to run at a certain time, but for some reason (for example, the computer was turned off or the Task Scheduler service was busy) the task was not activated.
 
+## Usage (MacOS)
+
+1. Download the contents of Executables folder.
+2. Open Terminal and browse to the folder.
+3. Run the following command:
+    ```
+    dotnet run CowinAvailabilityTracker.dll <DISTRICT ID> <SENDGRID API KEY> <FROM EMAIL> <TO EMAIL>
+    ```
+4. Optional: You can use Automator to run a Shell script at periodic intervals as well.
