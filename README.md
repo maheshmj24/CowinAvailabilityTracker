@@ -44,13 +44,15 @@ The email address used to set up the Single Sender Identity as part of pre-requi
 The email address to be notified. **Cannot be same as the From Email**.
 ## Pre-requisites
 
-1. Create a [SendGrid](https://sendgrid.com/) account to send emails. (Free sign-up)
+1. [.NET Core 3.1](https://dotnet.microsoft.com/download/dotnet/3.1) or later. Link to .NET Core 3.1 Runtime (v3.1.14) - [link](https://dotnet.microsoft.com/download/dotnet/thank-you/runtime-3.1.14-windows-x64-installer)
+2. Create a [SendGrid](https://sendgrid.com/) account to send emails. (Free sign-up)
     1. You will be asked to verify the account / setup MFA.
     2. Create a 'Single Sender Identity' which will be used to send emails from.
         1. You can use the same email ID you used to sign-up.
         2. You can provide the same email for the 'From Email Address' and 'Reply To' fields.
         ![sendgrid_sender_identity](./HelperImages/sendgrid_sender_identity.png)
     3. Create an API Key. (Left navigation -> Settings -> API Keys)
+2. 
 
 ## Usage
 
