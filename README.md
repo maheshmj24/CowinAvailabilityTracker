@@ -52,7 +52,6 @@ The email address to be notified. **Cannot be same as the From Email**.
         2. You can provide the same email for the 'From Email Address' and 'Reply To' fields.
         ![sendgrid_sender_identity](./HelperImages/sendgrid_sender_identity.png)
     3. Create an API Key. (Left navigation -> Settings -> API Keys)
-2. 
 
 ## Usage
 
