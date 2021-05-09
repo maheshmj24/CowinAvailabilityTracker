@@ -9,7 +9,7 @@ Task Scheduler in Windows, is used to run the above console app at specific inte
 ## Arguments required for the cosole app
 
 The console app requires a total of 4 command line arguments.
-## 1. District ID - 
+## 1. District ID
 ### Sample District Codes in Kerala
 - 301: Alappuzha
 - 307: Ernakulam
