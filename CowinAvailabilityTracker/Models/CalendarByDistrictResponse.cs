@@ -24,7 +24,7 @@ namespace CowinAvailabilityTracker
     public class Session
     {
         [JsonPropertyName("available_capacity")]
-        public int Available_capacity { get; set; }
+        public double Available_capacity { get; set; }
 
         [JsonPropertyName("min_age_limit")]
         public int Min_age_limit { get; set; }

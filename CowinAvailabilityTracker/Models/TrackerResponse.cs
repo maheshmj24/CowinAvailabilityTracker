@@ -12,7 +12,7 @@ namespace CowinAvailabilityTracker
     public class AvailableSession
     {
         public string Name { get; set; }
-        public int Available_capacity { get; set; }
+        public double Available_capacity { get; set; }
         public int Min_age_limit { get; set; }
     }
 }
