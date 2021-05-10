@@ -69,18 +69,20 @@ CowinAvailabilityTracker.exe <DISTRICT ID> <SENDGRID API KEY> <FROM EMAIL> <TO E
     1. In the General tab, provide a name for the task.
     ![taskscheduler_1.png](./HelperImages/taskscheduler_1.png)
     2. In the Triggers tab, 
-        1. Create a new trgger
+        1. Create a new trigger
         2. Set the schedule as you seem fit. The below screenshot is set to start running the task at 8 am everyday, 30 mins apart for 16 hours. (ie 8am - 12am the next day)
         ![taskscheduler_2.png](./HelperImages/taskscheduler_2.png)
     3. In the Actions tab,
-        1. In the Program/script field, browse and select the .exe file downloaded as part of step 1.
-        2. In the Add arguments field, provide space separated command line arguments.
+        1. Create a new action
+        2. In the Program/script field, browse and select the .exe file downloaded as part of step 1.
+        3. In the Add arguments field, provide space separated command line arguments.
         ```
         <DISTRICT ID> <SENDGRID API KEY> <FROM EMAIL> <TO EMAIL>
         ```
         ![taskscheduler_3.png](./HelperImages/taskscheduler_3.png)
-    4. Optionally in the Settings tab, check the option - *Run task as soon as possible after a scheduled start is missed.*
+    4. Optional: In the Settings tab, check the option - *Run task as soon as possible after a scheduled start is missed.*
         1. If this setting is checked, the Task Scheduler service will start the task if the task was scheduled to run at a certain time, but for some reason (for example, the computer was turned off or the Task Scheduler service was busy) the task was not activated.
+    5. Optional: In the Conditions tab, uncheck the option - *Start the task only if the computer is on AC power*
 
 ## Usage (MacOS)
 
