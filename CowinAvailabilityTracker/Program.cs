@@ -64,7 +64,7 @@ namespace CowinAvailabilityTracker
 
             //Call the calendarByDistrict api
             var streamTask = Client.GetStreamAsync(
-                "https://cdn-api.co-vin.in/api/v2/appointment/sessions/calendarByDistrict?" +
+                "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?" +
                 "district_id=" + districtID +
                 "&date=" + DateTime.Now.ToString("dd-MM-yyyy"));
 
